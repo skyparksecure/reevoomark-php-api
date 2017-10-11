@@ -4,12 +4,12 @@ require_once("reevoo_mark_cache.php");
 
 class ReevooMarkHttpClient {
 
-  function ReevooMarkHttpClient($base_url, $cache_path) {
+  public function __construct($base_url, $cache_path) {
     $this->base_url = $base_url;
     $this->cache = new ReevooMarkCache($cache_path);
   }
 
-  function getData($url_path){
+  public function getData($url_path){
     $doc = $this->cache->newDocumentFromCache($url_path);
     if($doc->hasExpired())
     {
